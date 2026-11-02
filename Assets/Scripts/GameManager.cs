@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    public AudioSource audioSource;
     public UIManager uiManager;
     public Transform playerTransform;
     public CharacterController playerController;
@@ -91,6 +92,10 @@ public class GameManager : MonoBehaviour
         }
 
         ShowMessage("Trap hit - reset");
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
 
         if (playerController != null)
         {

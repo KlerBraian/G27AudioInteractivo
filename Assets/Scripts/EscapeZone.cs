@@ -6,6 +6,7 @@ public class EscapeZone : MonoBehaviour
 {
     public GameManager gameManager;
     public AudioSource audioSource;
+    public AudioSource musicBackground;
 
     private bool escaped;
 
@@ -38,6 +39,7 @@ public class EscapeZone : MonoBehaviour
         if (audioSource != null && audioSource.clip != null)
         {
             audioSource.PlayOneShot(audioSource.clip);
+            musicBackground.Stop();
         }
 
         gameManager?.TryEscape();
