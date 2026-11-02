@@ -1,9 +1,11 @@
+
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class Trap : MonoBehaviour
 {
     public GameManager gameManager;
+    private AudioSource[] audioSources;
 
     private bool trapActive = true;
 
@@ -16,6 +18,8 @@ public class Trap : MonoBehaviour
 
         Collider trapCollider = GetComponent<Collider>();
         trapCollider.isTrigger = true;
+
+        audioSources = GetComponentsInChildren<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +41,12 @@ public class Trap : MonoBehaviour
 
         trapActive = false;
 
+        // Detener todos los sonidos de la trampa
+        foreach (AudioSource source in audioSources)
+        {
+            source.Stop();
+        }
+
         foreach (Renderer trapRenderer in GetComponentsInChildren<Renderer>())
         {
             trapRenderer.enabled = false;
@@ -48,3 +58,4 @@ public class Trap : MonoBehaviour
         }
     }
 }
+

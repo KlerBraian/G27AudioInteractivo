@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class ButtonSwitch : MonoBehaviour, IInteractable
@@ -6,6 +7,8 @@ public class ButtonSwitch : MonoBehaviour, IInteractable
     public Trap targetTrap;
     public Transform buttonVisual;
     public Renderer buttonRenderer;
+    public AudioSource audioSource;
+
     public Color pressedColor = new Color(0.08f, 0.75f, 0.32f);
 
     private bool pressed;
@@ -37,6 +40,11 @@ public class ButtonSwitch : MonoBehaviour, IInteractable
         if (buttonVisual != null)
         {
             originalButtonLocalPosition = buttonVisual.localPosition;
+
+            if (audioSource == null)
+            {
+                audioSource = buttonVisual.GetComponent<AudioSource>();
+            }
         }
     }
 
@@ -48,6 +56,11 @@ public class ButtonSwitch : MonoBehaviour, IInteractable
         {
             manager?.ShowMessage("Button already pressed");
             return;
+        }
+
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
         }
 
         pressed = true;
