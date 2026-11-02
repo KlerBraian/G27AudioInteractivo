@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 public class SimpleFirstPersonController : MonoBehaviour
 {
     public Camera playerCamera;
+    public AudioSource walkingAudioSource;
+
     public float moveSpeed = 4f;
     public float lookSensitivity = 0.08f;
     public float gravity = -18f;
@@ -21,6 +24,11 @@ public class SimpleFirstPersonController : MonoBehaviour
         {
             playerCamera = GetComponentInChildren<Camera>();
         }
+
+        if (walkingAudioSource == null)
+        {
+            walkingAudioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void OnEnable()
@@ -36,6 +44,11 @@ public class SimpleFirstPersonController : MonoBehaviour
         if (Application.isPlaying)
         {
             UnlockCursor();
+        }
+
+        if (walkingAudioSource != null)
+        {
+            walkingAudioSource.Stop();
         }
     }
 
@@ -103,6 +116,7 @@ public class SimpleFirstPersonController : MonoBehaviour
 
         Vector2 moveInput = ReadMoveInput(keyboard);
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+
         if (move.sqrMagnitude > 1f)
         {
             move.Normalize();
@@ -116,6 +130,21 @@ public class SimpleFirstPersonController : MonoBehaviour
         verticalVelocity += gravity * Time.deltaTime;
         Vector3 velocity = move * moveSpeed + Vector3.up * verticalVelocity;
         controller.Move(velocity * Time.deltaTime);
+
+        // Reproducir sonido solamente cuando se mueve estando en el suelo.
+        bool isMoving = moveInput.sqrMagnitude > 0.01f && controller.isGrounded;
+
+        if (walkingAudioSource != null)
+        {
+            if (isMoving && !walkingAudioSource.isPlaying)
+            {
+                walkingAudioSource.Play();
+            }
+            else if (!isMoving && walkingAudioSource.isPlaying)
+            {
+                walkingAudioSource.Stop();
+            }
+        }
     }
 
     private static Vector2 ReadMoveInput(Keyboard keyboard)
