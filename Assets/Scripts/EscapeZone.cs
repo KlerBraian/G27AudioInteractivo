@@ -1,9 +1,13 @@
+
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class EscapeZone : MonoBehaviour
 {
     public GameManager gameManager;
+    public AudioSource audioSource;
+
+    private bool escaped;
 
     private void Awake()
     {
@@ -12,15 +16,30 @@ public class EscapeZone : MonoBehaviour
             gameManager = FindAnyObjectByType<GameManager>();
         }
 
+        if (audioSource == null)
+        {
+            audioSource = GetComponentInChildren<AudioSource>();
+        }
+
         Collider zoneCollider = GetComponent<Collider>();
         zoneCollider.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (escaped || !other.CompareTag("Player"))
         {
-            gameManager?.TryEscape();
+            return;
         }
+
+        escaped = true;
+
+        // Reproducir sonido de victoria inmediatamente.
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
+
+        gameManager?.TryEscape();
     }
 }
