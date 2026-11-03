@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 129079490}
   - component: {fileID: 129079489}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Ambiente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,8 +1437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8680025f29c7d54aad187e8f8fe588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioMezcla
-  normal: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
-  interior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  interior: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  exterior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
   transicion: 1
 --- !u!1 &312313306
 GameObject:
@@ -1570,7 +1570,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 324ff43dc0ff59e4594bd3fef038b1d7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1579,7 +1579,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 2.75
+  MaxDistance: 4
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -3183,8 +3183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8680025f29c7d54aad187e8f8fe588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  normal: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
-  interior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  interior: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  exterior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
   transicion: 1
 --- !u!82 &608562953
 AudioSource:
@@ -5128,7 +5128,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0339962638563944b82febe536c6735f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.285
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6726,7 +6726,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0d96d53e8292f2a4f82ef2ef1ca4f336, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6735,7 +6735,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 2.75
+  MaxDistance: 3
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -7010,8 +7010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8680025f29c7d54aad187e8f8fe588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  normal: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
-  interior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  interior: {fileID: 24500006, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
+  exterior: {fileID: -7995696735100522150, guid: 7a92711dbfdfe484a9e0566b13ce8c0e, type: 2}
   transicion: 1
 --- !u!1 &1524942322
 GameObject:
@@ -8244,7 +8244,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d257833b627a6114b8bd57f8bcced6ec, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8253,7 +8253,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 2.75
+  MaxDistance: 4
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
